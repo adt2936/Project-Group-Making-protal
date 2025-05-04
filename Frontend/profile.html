@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="profile.css">
+    <script type="text/javascript" src="profile.js" defer></script>
+</head>
+<body>
+    <div class="wrapper">
+        <h2>Profile</h2>
+        <p id="error-message"></p>
+        <form id="userId">
+            <div>
+                <label for="userName-input">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Z"/></svg>
+                </label>
+                <input required type="text" name="userName" id="userName-input" placeholder="Your Name">
+            </div>
+            <div>
+                <label for="userEmail-input">
+                    <span>@</span>
+                </label>
+                <input type="email" name="userEmail" id="userEmail-input" placeholder="Email">
+            </div>
+            <div>
+                <label for="userDegree-input">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h440q19 0 36 8.5t28 23.5l216 288-216 288q-11 15-28 23.5t-36 8.5H160Z"/></svg></label>
+                <input type="text" name="userDegree" id="userDegree-input" placeholder="Degree">
+            </div>
+            <div>
+                <label for="GraduationYear-input">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M480-120 200-272v-240L40-600l440-240 440 240v320h-80v-276l-80 44v240L480-120Zm0-332 274-148-274-148-274 148 274 148Zm0 241 200-108v-151L480-360 280-470v151l200 108Zm0-241Zm0 90Zm0 0Z"/></svg>
+                </label>
+                <input type="text" name="" id="GraduationYear-input" placeholder="Graduation Year">
+            </div>
+            <div>
+                <label for="Branch-input">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m233-120 65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"/></svg>
+                </label>
+                <input type="text" name="" id="Branch-input" placeholder="Branch">
+            </div>
+            <div>
+                <label for="userSkill1-input">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m320-80 40-280H160l360-520h80l-40 320h240L400-80h-80Z"/></svg>
+                </label>
+                <input type="text" name="" id="userSkills1-input" placeholder="Skill 1">
+            </div>
+            <div>
+                <label for="userSkill2-input">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m320-80 40-280H160l360-520h80l-40 320h240L400-80h-80Z"/></svg>
+                </label>
+                <input type="text" name="" id="userSkills2-input" placeholder="Skill 2">
+            </div>
+            <div>
+                <label for="userSkill3-input">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m320-80 40-280H160l360-520h80l-40 320h240L400-80h-80Z"/></svg>
+                </label>
+                <input type="text" name="" id="userSkill3-input" placeholder="Skill 3">
+            </div>
+            <div>
+                <label for="userSkill4-input">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m320-80 40-280H160l360-520h80l-40 320h240L400-80h-80Z"/></svg>
+                </label>
+                <input type="text" name="" id="userSkill4-input" placeholder="Skill 4">
+            </div>
+            <button type="submit">Submit</button>
+            <button type="button" onclick="enableEditing()">Update</button>
+        </form>
+    </div>          
+</body>
+</html>
