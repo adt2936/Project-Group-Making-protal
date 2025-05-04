@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Project</title>
+    <link rel="stylesheet" href="project.css">
+    <script type="text/javascript" src="validation.js" defer></script>
+</head>
+<body>
+    <div class="wrapper">
+        <h1>My Projects</h1>
+        <p id="error-message"></p>
+        <form id="projectId">
+            <div>
+                <label for="namePro">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h168q13-36 43.5-58t68.5-22q38 0 68.5 22t43.5 58h168q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm80-160h280v-80H280v80Zm0-160h400v-80H280v80Zm0-160h400v-80H280v80Zm200-190q13 0 21.5-8.5T510-820q0-13-8.5-21.5T480-850q-13 0-21.5 8.5T450-820q0 13 8.5 21.5T480-790Z"/></svg>
+                </label>
+                <input required type="text" name="namePro" id="namePro-input" placeholder="Project Name">
+            </div>
+            <div>
+                <label for="proTitle">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m233-120 65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"/></svg>
+                </label>
+                <input type="text" name="proTitle" id="proTitle-input" placeholder="Project Statement">
+            </div>
+            <div>
+                <label for="proDescription">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M560-564v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-600q-38 0-73 9.5T560-564Zm0 220v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-380q-38 0-73 9t-67 27Zm0-110v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-490q-38 0-73 9.5T560-454Zm-40 176q44-21 88.5-31.5T700-320q36 0 70.5 6t69.5 18v-396q-33-14-68.5-21t-71.5-7q-47 0-93 12t-87 36v394Zm-40 118q-48-38-104-59t-116-21q-42 0-82.5 11T100-198q-21 11-40.5-1T40-234v-482q0-11 5.5-21T62-752q47-23 96.5-35.5T260-800q58 0 113.5 15T480-740q51-30 106.5-45T700-800q52 0 101.5 12.5T898-752q11 5 16.5 15t5.5 21v482q0 23-19.5 35t-40.5 1q-37-20-77.5-31T700-240q-60 0-116 21t-104 59Z"/></svg>
+                </label>
+                <input type="text" name="proDescription" id="proDescription" placeholder="Project Description">
+            </div>
+            <div>
+                <label for="skillsReq">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m320-80 40-280H160l360-520h80l-40 320h240L400-80h-80Z"/></svg>
+                </label>
+                <input type="text" name="skillsReq" id="skillsReq" placeholder="Skills Required (comma separated)">
+            </div>
+            <div>
+                <label for="deadline">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M580-240q-42 0-71-29t-29-71q0-42 29-71t71-29q42 0 71 29t29 71q0 42-29 71t-71 29ZM200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Z"/></svg>
+                </label>
+                <input type="date" name="deadline" id="deadline" placeholder="Project Deadline">
+            </div>
+            <div>
+                <label for="statusGrp">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h440q19 0 36 8.5t28 23.5l216 288-216 288q-11 15-28 23.5t-36 8.5H160Z"/></svg>
+                </label>
+                <select name="statusGrp" id="statusGrp-input" required>
+                    <option value="pending">Pending</option>
+                    <option value="group complete">Group Complete</option>
+                </select>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('projectId').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('namePro-input').value,
+                title: document.getElementById('proTitle-input').value,
+                description: document.getElementById('proDescription').value,
+                deadline: document.getElementById('deadline').value,
+                status: document.getElementById('statusGrp-input').value,
+                skills: document.getElementById('skillsReq').value.split(',').map(s => s.trim())
+            };
+
+            try {
+                const token = localStorage.getItem('token');
+                if (!token) {
+                    window.location.href = 'auth/login.html';
+                    return;
+                }
+
+                const response = await fetch('/api/projects', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                if (response.ok) {
+                    window.location.href = 'dashboard.html';
+                } else {
+                    const data = await response.json();
+                    document.getElementById('error-message').textContent = data.message || 'Failed to create project';
+                }
+            } catch (err) {
+                document.getElementById('error-message').textContent = 'Connection error';
+                console.error('Project submission error:', err);
+            }
+        });
+
+        // Check if user is logged in
+        if (!localStorage.getItem('token')) {
+            window.location.href = 'auth/login.html';
+        }
+    </script>
+</body>
+</html>

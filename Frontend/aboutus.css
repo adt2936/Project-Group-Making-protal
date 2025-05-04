@@ -1,0 +1,44 @@
+body{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(Background.jpg);
+  background-size: cover;
+  background-position: center;
+}
+.mainbox{
+  width: 90%;
+  margin: auto;
+  display: flex;
+}
+.textbox h1{
+  font-size: 80px;
+  font-family: 'Poppins';
+  margin-top:60px;
+  margin-bottom: 60px;
+  color: azure;
+}
+.textbox p{
+  margin: auto;
+  margin-top: 20px;
+  font-size: 25px;
+  font-weight: 5px;
+  margin-bottom: 20px;
+  color: azure;
+}
+#btn{
+  border: none;
+  color: aliceblue;
+  font-size: 1.2rem;
+  color: blueviolet;
+  padding: 5px 10px;
+  border-left: 2px solid azure;
+  border-right: 2px solid azure;
+  border-radius: 20px;
+}
+#bun:hover{
+  cursor: pointer;
+  border-left: 2px solid antiquewhite;
+  border-right: 2px solid antiquewhite;
+  transition: 200ms ease-in-out;
+  box-shadow: 5px 5px 5px grey;
+  transform:scale(1.1);
+}
