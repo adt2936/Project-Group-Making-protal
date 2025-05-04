@@ -34,8 +34,26 @@ router.post('/', auth, async (req, res) => {
 });
 
 // Get potential matches
+// Get potential matches based on required skills for a specific project
 router.get('/suggestions', auth, async (req, res) => {
   try {
+    const { projectId } = req.query; // Get the projectId from query parameters
+
+    if (!projectId) {
+      return res.status(400).json({ message: 'Project ID is required' });
+    }
+
+    // Fetch required skills for the given project
+    const [skillsResult] = await db.query(
+      'SELECT s.skill_name FROM projectskillsrequired psr ' +
+      'JOIN skills s ON psr.skill_id = s.skill_id ' +
+      'WHERE psr.project_id = ?',
+      [projectId]
+    );
+
+    const requiredSkills = skillsResult.map(skill => skill.skill_name);
+
+    // Query to fetch users who match the required skills
     const [users] = await db.query(
       `SELECT u.*, GROUP_CONCAT(s.skill_name) as skills 
        FROM users u
@@ -44,11 +62,12 @@ router.get('/suggestions', auth, async (req, res) => {
        WHERE u.user_id != ? 
          AND u.user_id NOT IN (
            SELECT swipedperson_id FROM Swiping WHERE swiper_id = ?
-         )
-       GROUP BY u.user_id`, 
-      [req.user.id, req.user.id]
+         ) 
+         AND s.skill_name IN (?) 
+       GROUP BY u.user_id`,
+      [req.user.id, req.user.id, requiredSkills]
     );
-    
+
     res.json(users.map(u => ({
       ...u,
       skills: u.skills ? u.skills.split(',') : []
@@ -57,5 +76,6 @@ router.get('/suggestions', auth, async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 });
+
 
 module.exports = router;

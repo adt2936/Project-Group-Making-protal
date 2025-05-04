@@ -4,7 +4,7 @@ const container = document.getElementById("card-container");
 // ======================
 // Fetch Users to Swipe On
 // ======================
-async function fetchUsers() {
+async function fetchUsers(projectId) {
   try {
     const token = localStorage.getItem("token");
     
@@ -13,7 +13,7 @@ async function fetchUsers() {
       return [];
     }
 
-    const response = await fetch(`${API_URL}/swipes/suggestions`, {
+    const response = await fetch(`${API_URL}/swipes/suggestions?projectId=${projectId}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
 
@@ -24,6 +24,7 @@ async function fetchUsers() {
     return [];
   }
 }
+
 
 // ======================
 // Handle Swipe Decisions
@@ -57,9 +58,9 @@ function createCard(user, index) {
   const card = document.createElement("div");
   card.className = "card";
   card.innerHTML = `
-    <h1>${user.username}</h1>
-    <p><strong>Year:</strong> ${user.year || "N/A"}</p>
-    <p><strong>Branch:</strong> ${user.branch || "N/A"}</p>
+    <h1>${user.user_name}</h1>  <!-- Correct field name -->
+    <p><strong>Year:</strong> ${user.user_year || "N/A"}</p>  <!-- Correct field name -->
+    <p><strong>Branch:</strong> ${user.user_branch || "N/A"}</p>  <!-- Correct field name -->
     <p><strong>Skills:</strong> ${user.skills?.join(", ") || "None listed"}</p>
     <div class="label" id="label-${index}"></div>
   `;
@@ -120,12 +121,14 @@ function createCard(user, index) {
   container.appendChild(card);
 }
 
+
 // ======================
 // Initialize Swipe Cards
 // ======================
 async function init() {
-  const users = await fetchUsers();
-  
+  const projectId = 1; // Example: Set this dynamically based on the selected project
+  const users = await fetchUsers(projectId);
+
   if (users.length === 0) {
     container.innerHTML = `<p style="color: white; text-align: center;">No more users to swipe on!</p>`;
     return;
