@@ -96,5 +96,5 @@ form button{
     transition: 150ms ease;
 }
 form button:hover{
-    background-color: var(--text-color);
+    background-color: var(--input-color);
 }
