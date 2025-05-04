@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const path = require('path');
 const db = require('./db');
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/users');
@@ -13,12 +14,16 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
+// Serve static files from the Frontend directory
+app.use(express.static(path.join(__dirname, '../Frontend')));
+
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/projects', projectRoutes);
 app.use('/api/swipes', swipeRoutes);
 
+<<<<<<< HEAD
 // New Route to Handle Profile Save
 app.post('/api/users/profile', async (req, res) => {
   const { userName, userEmail, password, userBranch, userYear, github, linkedin, userSkills } = req.body;
@@ -71,6 +76,11 @@ app.post('/api/users/profile', async (req, res) => {
 // Catch-all for unregistered routes
 app.use((req, res) => {
   res.status(404).json({ message: 'Route not found', path: req.originalUrl });
+=======
+// Serve index.html for all other routes
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../Frontend/home.html'));
+>>>>>>> 38ad8ae47f8c730466f2329b349142065584af59
 });
 
 const PORT = process.env.PORT || 5000;
