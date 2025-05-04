@@ -5,6 +5,7 @@ const auth = require('../middleware/auth');
 
 // Create project
 router.post('/', auth, async (req, res) => {
+  console.log(req.body);
   try {
     const { name, title, description, deadline, skills } = req.body;
     

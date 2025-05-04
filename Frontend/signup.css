@@ -28,8 +28,8 @@
   }
 
 :root{
-    --accent-color: #318CE7;
-    --base-color: #B0E0E6;
+    --accent-color: #86c1cd;
+    --base-color: #4ca2b1;
     --text-color: black;
     --input-color: #F0F8FF;
 }
@@ -45,7 +45,7 @@ html{
 }
 body{
     min-height: 100vh;
-    background-image: url(Background.jpg);
+    background-image: url(Background2.jpg);
     background-size: cover;
     background-position: right;
     overflow: hidden;
@@ -124,5 +124,5 @@ form button{
     transition: 150ms ease;
 }
 form button:hover{
-    background-color: var(--text-color);
+    background-color: var(--input-color);
 }

@@ -57,44 +57,42 @@
 
     <script>
         document.getElementById('projectId').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const formData = {
-                name: document.getElementById('namePro-input').value,
-                title: document.getElementById('proTitle-input').value,
-                description: document.getElementById('proDescription').value,
-                deadline: document.getElementById('deadline').value,
-                status: document.getElementById('statusGrp-input').value,
-                skills: document.getElementById('skillsReq').value.split(',').map(s => s.trim())
-            };
+  e.preventDefault();
+  
+  const formData = {
+    name: document.getElementById('namePro-input').value,
+    title: document.getElementById('proTitle-input').value,
+    description: document.getElementById('proDescription').value,
+    deadline: document.getElementById('deadline').value,
+    skills: document.getElementById('skillsReq').value.split(',').map(s => s.trim())
+  };
 
-            try {
-                const token = localStorage.getItem('token');
-                if (!token) {
-                    window.location.href = 'auth/login.html';
-                    return;
-                }
+  console.log("Submitting:", formData); // ← Debug what's being sent
 
-                const response = await fetch('/api/projects', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${token}`
-                    },
-                    body: JSON.stringify(formData)
-                });
+  try {
+    const token = localStorage.getItem('token');
+    if (!token) throw new Error("No token found");
+    
+    const response = await fetch('http://localhost:5000/api/projects', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify(formData)
+    });
 
-                if (response.ok) {
-                    window.location.href = 'dashboard.html';
-                } else {
-                    const data = await response.json();
-                    document.getElementById('error-message').textContent = data.message || 'Failed to create project';
-                }
-            } catch (err) {
-                document.getElementById('error-message').textContent = 'Connection error';
-                console.error('Project submission error:', err);
-            }
-        });
+    const data = await response.json();
+    console.log("Response:", data); // ← Debug response
+    
+    if (!response.ok) throw new Error(data.message || "Request failed");
+    
+    window.location.href = "home.html";
+  } catch (err) {
+    console.error("Error:", err);
+    document.getElementById('error-message').textContent = err.message;
+  }
+});
 
         // Check if user is logged in
         if (!localStorage.getItem('token')) {
